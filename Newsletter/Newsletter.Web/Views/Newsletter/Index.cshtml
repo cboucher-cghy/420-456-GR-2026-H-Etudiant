@@ -1,0 +1,56 @@
+﻿@model NewsletterIndexVM
+
+@{
+    ViewData["Title"] = "Newsletter";
+}
+
+<div class="container">
+    <div>@TempData["Message"]</div>
+    <h1>S'inscrire à l'infolettre</h1>
+    <form method="post" action="/newsletter/subscribe">
+        @* Sans TagHelper *@
+        @*
+        <div class="form-group">
+        <label for="@Model.Register.Email"></label>
+        <input type="@Model.Register.Email" class="form-control" id="email" name="email" required>
+        </div>
+        *@
+
+        @* Avec TagHelper *@
+        <div class="form-group">
+            <label asp-for="@Model.Register.Email"></label>
+            <input asp-for="@Model.Register.Email" class="form-control">
+        </div>
+
+        @* Avec TagHelper, sans SelectList *@
+        @*
+        <div class="form-group">
+        <label asp-for="@Model.Register.CategoryId"></label>
+        <input asp-for="@Model.Register.CategoryId" class="form-control">
+        </div>
+        *@
+        @* Avec TagHelper, sans SelectList *@
+
+        <div class="form-group">
+            <label asp-for="@Model.Register.CategoryId"></label>
+            <select asp-for="@Model.Register.CategoryId" asp-items="@Model.Register.Categories" class="form-control">
+                <option value="">Choisir une catégorie</option>
+            </select>
+        </div>
+
+        <!-- TODO: Ajouter les dates de début et de fin! -->
+        <button type="submit" class="btn btn-primary">S'inscrire</button>
+    </form>
+</div>
+
+
+<div class="container">
+    <h2>
+        Newsletter Subscribers - Vue partielle
+    </h2>
+    @foreach (var subscriber in Model.Subscribers)
+    {
+        @await Html.PartialAsync("_SubscriberPartial", subscriber)
+    }
+
+</div>
