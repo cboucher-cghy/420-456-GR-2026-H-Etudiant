@@ -1,8 +1,7 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using GeniusChuck.Newsletter.Web.Data;
+﻿using GeniusChuck.Newsletter.Web.Data;
 using GeniusChuck.Newsletter.Web.Models;
 using GeniusChuck.Newsletter.Web.ViewModels;
+using MapsterMapper;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,10 +14,10 @@ namespace GeniusChuck.Newsletter.Web.Services
 
         public int Add(CategoryCreateVM vm)
         {
-            // Avec automapper
+            // Avec mapper
             var category = _mapper.Map<Category>(vm);
 
-            // Sans automapper
+            // Sans mapper
             //var category = new Category()
             //{
             //    Id = 0,

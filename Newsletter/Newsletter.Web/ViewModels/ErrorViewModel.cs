@@ -1,4 +1,4 @@
-namespace GeniusChuck.Newsletter.Web.Models
+namespace GeniusChuck.Newsletter.Web.ViewModels
 {
     public class ErrorViewModel
     {

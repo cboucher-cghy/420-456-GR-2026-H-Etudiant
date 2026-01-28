@@ -1,7 +1,8 @@
-﻿using AutoMapper;
-using GeniusChuck.Newsletter.Web.Data;
+﻿using GeniusChuck.Newsletter.Web.Data;
 using GeniusChuck.Newsletter.Web.Services;
 using GeniusChuck.Newsletter.Web.ViewModels;
+using Mapster;
+using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeniusChuck.Newsletter.Web.Controllers
@@ -79,7 +80,7 @@ namespace GeniusChuck.Newsletter.Web.Controllers
                 return NotFound();
             }
 
-            return View(mapper.Map<CategoryEditVM>(category));
+            return View(category.Adapt<CategoryEditVM>());
             //return View(new CategoryEditVM()
             //{
             //    Description = category.Description,
@@ -126,7 +127,7 @@ namespace GeniusChuck.Newsletter.Web.Controllers
                 return NotFound();
             }
 
-            return View(_mapper.Map<CategoryDetailsVM>(category));
+            return View(category.Adapt<CategoryDetailsVM>());
         }
 
         // POST: Categories/Delete/5
