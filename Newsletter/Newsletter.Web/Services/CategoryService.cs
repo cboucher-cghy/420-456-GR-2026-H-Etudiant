@@ -1,6 +1,7 @@
 ﻿using GeniusChuck.Newsletter.Web.Data;
 using GeniusChuck.Newsletter.Web.Models;
 using GeniusChuck.Newsletter.Web.ViewModels;
+using Mapster;
 using MapsterMapper;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -51,7 +52,7 @@ namespace GeniusChuck.Newsletter.Web.Services
 
         public CategoryDto? GetById(int id)
         {
-            var category = _context.Categories.ProjectTo<CategoryDto>(_mapper.ConfigurationProvider).FirstOrDefault(x => x.Id == id);
+            var category = _context.Categories.ProjectToType<CategoryDto>().FirstOrDefault(x => x.Id == id);
             return category;
             //return new CategoryDto()
             //{
@@ -60,6 +61,7 @@ namespace GeniusChuck.Newsletter.Web.Services
             //    Name = category.Name,
             //    Id = category.Id
             //};
+            //
             // Sans ProjectTo
             //var category = _context.Categories.Select(category=> new CategoryDetailsVM()
             //{
@@ -80,13 +82,6 @@ namespace GeniusChuck.Newsletter.Web.Services
             //    };
             //}
             //return null;
-
-            // Avec ProjectTo
-            //var category = _context
-            //    .Categories
-            //    .Include(x => x.Subscribers)
-            //    .ProjectTo<CategoryDetailsVM>(_mapper.ConfigurationProvider)
-            //    .FirstOrDefault(x => x.Id == id);
 
             // Avec une méthode d'extension
             //var category = _context

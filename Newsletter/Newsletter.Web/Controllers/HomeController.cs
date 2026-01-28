@@ -1,4 +1,4 @@
-using GeniusChuck.Newsletter.Web.Models;
+using GeniusChuck.Newsletter.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

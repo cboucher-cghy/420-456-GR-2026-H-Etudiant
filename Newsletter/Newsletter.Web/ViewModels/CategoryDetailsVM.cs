@@ -14,7 +14,7 @@ namespace GeniusChuck.Newsletter.Web.ViewModels
         [MinLength(3)]
         public string Description { get; set; } = default!;
 
-        public List<NewsletterSubscriberVM> Subscribers { get; set; }
+        public List<NewsletterSubscriberVM> Subscribers { get; set; } = default!;
 
         [DisplayName("Ajouté le")]
         public DateTime CreatedAt { get; set; }

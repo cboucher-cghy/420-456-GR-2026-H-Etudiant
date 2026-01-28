@@ -45,7 +45,10 @@ namespace GeniusChuck.Newsletter.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Subscribe(NewsletterSubscriberVM vm)
+        // Option #2) Utiliser le Bind pour lier le préfixe "Register" du modèle NewsletterIndexVM
+        //public ActionResult Subscribe([Bind(Prefix = "Register")] NewsletterSubscriberVM vm)
+        // Option #1) Utiliser le NewsletterRegisterVM pour lier les bons champs
+        public ActionResult Subscribe([Bind(Prefix = "Register")] NewsletterRegisterVM vm)
         {
             _newsletterService.Subscribe(new Subscriber()
             {
@@ -53,7 +56,6 @@ namespace GeniusChuck.Newsletter.Web.Controllers
                 Id = 0,
             });
 
-            //_newsletterService.Subscribe(subscriber);
             TempData["Message"] = "You have been subscribed to our newsletter!";
             return RedirectToAction(nameof(Index));
         }

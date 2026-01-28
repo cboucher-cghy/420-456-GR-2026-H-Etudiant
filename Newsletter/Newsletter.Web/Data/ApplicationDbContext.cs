@@ -33,10 +33,10 @@ namespace GeniusChuck.Newsletter.Web.Data
             //    .HasDefaultValueSql("GETDATE()");
 
             modelBuilder.Entity<Category>().HasData([
-                new Category() { Id = 1, Name = "Sport", Description = "Vive le sport.", CreatedAt = DateTime.Now},
-                new Category() { Id = 2, Name = "Culture", Description = "Vive la culture.", CreatedAt = DateTime.Now },
-                new Category() { Id = 3, Name = "Politique", Description = "Vive la politique.", CreatedAt = DateTime.Now },
-                new Category() { Id = 5, Name = "Jeux vidéo", Description = "Vive les jeux vidéo.", CreatedAt = DateTime.Now }
+                new Category() { Id = 1, Name = "Sport", Description = "Vive le sport.", CreatedAt = new DateTime(2026, 1, 28, 13, 22, 57, 251, DateTimeKind.Local).AddTicks(4753)},
+                new Category() { Id = 2, Name = "Culture", Description = "Vive la culture.", CreatedAt = new DateTime(2026, 1, 28, 13, 22, 57, 253, DateTimeKind.Local).AddTicks(3034)},
+                new Category() { Id = 3, Name = "Politique", Description = "Vive la politique.", CreatedAt = new DateTime(2026, 1, 28, 13, 22, 57, 253, DateTimeKind.Local).AddTicks(3051)},
+                new Category() { Id = 5, Name = "Jeux vidéo", Description = "Vive les jeux vidéo.", CreatedAt = new DateTime(2026, 1, 28, 13, 22, 57, 253, DateTimeKind.Local).AddTicks(3054)}
             ]);
         }
 

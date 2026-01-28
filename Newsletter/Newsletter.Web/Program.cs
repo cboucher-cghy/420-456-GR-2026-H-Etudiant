@@ -26,7 +26,11 @@ if (builder.Environment.IsDevelopment())
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(x =>
 {
-    x.EnableSensitiveDataLogging();
+    if (builder.Environment.IsDevelopment())
+    {
+        // N'affichez les données sensibles qu'en mode développement uniquement.
+        x.EnableSensitiveDataLogging();
+    }
     x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
