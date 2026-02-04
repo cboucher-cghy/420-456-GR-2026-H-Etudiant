@@ -1,4 +1,6 @@
 ﻿using Bogus;
+using Exercice_Formulaire_Seeder;
+using Exercices_Formulaire_Web.Models;
 
 // https://github.com/bchavez/Bogus/tree/master/Examples/EFCoreSeedDb
 
