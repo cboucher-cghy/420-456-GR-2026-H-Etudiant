@@ -15,6 +15,7 @@
         <div class="alert-info">@TempData["Message"]</div>
     }
 }
+@if (Model is not null){
 <table class="table">
     <thead>
         <tr>
@@ -52,3 +53,8 @@
         }
     </tbody>
 </table>
+}
+else
+{
+    <p>Aucune catégorie...</p>
+}

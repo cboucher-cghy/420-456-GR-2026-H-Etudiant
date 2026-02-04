@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GeniusChuck.Newsletter.Web.ViewModels
 {
-    public class CategoryEditVM
+    public class CategoryEditVM : IValidatableObject
     {
         [Required]
         [DisplayName("Identifiant")]
@@ -17,5 +17,19 @@ namespace GeniusChuck.Newsletter.Web.ViewModels
         [MaxLength(50, ErrorMessage = "Description trop longue")]
         public string Description { get; set; } = default!;
 
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ConvertEmptyStringToNull = true, NullDisplayText = "N/A")]
+        public DateTime? CurrentDate { get; set; } = DateTime.Now;
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            yield return ValidationResult.Success!;
+
+            //var db = (ApplicationDbContext)validationContext.GetRequiredService(typeof(ApplicationDbContext));
+
+            //if (db.Categories.Any(c => c.Name == Name))
+            //{
+            //    yield return new ValidationResult("Le nom de la catégorie doit être unique.", [nameof(Name)]);
+            //}
+        }
     }
 }
