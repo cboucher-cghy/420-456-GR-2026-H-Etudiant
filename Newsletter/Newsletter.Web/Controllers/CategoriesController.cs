@@ -1,5 +1,4 @@
-﻿using GeniusChuck.Newsletter.Web.Data;
-using GeniusChuck.Newsletter.Web.Services;
+﻿using GeniusChuck.Newsletter.Web.Services;
 using GeniusChuck.Newsletter.Web.ViewModels;
 using Mapster;
 using MapsterMapper;
@@ -7,9 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GeniusChuck.Newsletter.Web.Controllers
 {
-    public class CategoriesController(ApplicationDbContext context, CategoryService categoryService, IMapper mapper) : Controller
+    public class CategoriesController(CategoryService categoryService, IMapper mapper) : Controller
     {
-        private readonly ApplicationDbContext _context = context;
         private readonly CategoryService _categoryService = categoryService;
         private readonly IMapper _mapper = mapper;
 
