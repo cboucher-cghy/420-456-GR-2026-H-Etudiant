@@ -14,7 +14,7 @@ namespace Exercices_Formulaire_Web.Models
 
         public DateTime DateEmbauche { get; set; }
 
-        public double SalaireAnnuel { get; set; }
+        public float SalaireAnnuel { get; set; }
 
         public bool EstEnEmploi { get; set; }
 

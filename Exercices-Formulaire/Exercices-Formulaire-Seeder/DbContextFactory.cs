@@ -7,10 +7,12 @@ namespace Exercice_Formulaire_Seeder
     {
         public static ApplicationDbContext CreateDbContext()
         {
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
+
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile(@Directory.GetCurrentDirectory() + "/appsettings.json")
-                .AddJsonFile(@Directory.GetCurrentDirectory() + "/appsettings.Development.json", optional: true)
+                .AddJsonFile(@Directory.GetCurrentDirectory() + $"/appsettings.{environment}.json", true)
                 .Build();
 
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();

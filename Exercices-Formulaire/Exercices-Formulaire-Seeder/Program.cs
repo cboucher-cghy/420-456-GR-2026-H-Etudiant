@@ -16,10 +16,10 @@ context.SaveChanges();
 var budgetFaker = new Faker();
 List<Departement> departements =
             [
-                new Departement() { Nom = "Finance", Budget = double.Round(budgetFaker.Random.Double(20000, 65000), 2) },
-                new Departement() { Nom = "Informatique", Budget = double.Round(budgetFaker.Random.Double(20000, 65000), 2) },
-                new Departement() { Nom = "Ressources humaines", Budget = double.Round(budgetFaker.Random.Double(20000, 65000), 2) },
-                new Departement() { Nom = "Développement", Budget = double.Round(budgetFaker.Random.Double(20000, 65000), 2) },
+                new Departement() { Nom = "Finance", Budget = float.Round(budgetFaker.Random.Float(20000, 65000), 2) },
+                new Departement() { Nom = "Informatique", Budget = float.Round(budgetFaker.Random.Float(20000, 65000), 2) },
+                new Departement() { Nom = "Ressources humaines", Budget = float.Round(budgetFaker.Random.Float(20000, 65000), 2) },
+                new Departement() { Nom = "Développement", Budget = float.Round(budgetFaker.Random.Float(20000, 65000), 2) },
             ];
 
 context.Departements.AddRange(departements);
