@@ -4,8 +4,8 @@ using GeniusChuck.Newsletter.Web.Models;
 
 var context = DbContextFactory.CreateDbContext();
 
-context.Subscribers.RemoveRange();
-context.CategorySubscriber.RemoveRange();
+context.RemoveRange(context.Subscribers);
+context.RemoveRange(context.CategorySubscriber);
 
 context.SaveChanges();
 

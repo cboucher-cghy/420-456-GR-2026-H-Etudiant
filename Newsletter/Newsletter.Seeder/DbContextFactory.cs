@@ -13,8 +13,8 @@ namespace EFCore_Seeder
 
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(@Directory.GetCurrentDirectory() + "/appsettings.json")
-                .AddJsonFile(@Directory.GetCurrentDirectory() + $"/appsettings.{environment}.json", true)
+                .AddJsonFile(Directory.GetCurrentDirectory() + "/appsettings.json")
+                .AddJsonFile(Directory.GetCurrentDirectory() + $"/appsettings.{environment}.json", true)
                 .Build();
 
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
