@@ -4,6 +4,7 @@ using GeniusChuck.Newsletter.Web.Interfaces;
 using GeniusChuck.Newsletter.Web.Services;
 using GeniusChuck.Newsletter.Web.Validations;
 using Mapster;
+
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,7 +23,6 @@ if (builder.Environment.IsDevelopment())
     mvcBuilder.AddRazorRuntimeCompilation();
 }
 
-
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(x =>
 {
@@ -32,8 +32,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(x =>
         x.EnableSensitiveDataLogging();
     }
     x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+
 });
 
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
 //builder.Services.AddScoped<INewsletterService, NewsletterInMemoryService>(); // Liste en mémoire au lieu d'une BD.
