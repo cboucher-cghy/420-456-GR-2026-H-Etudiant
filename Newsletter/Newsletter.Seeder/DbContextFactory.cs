@@ -1,11 +1,11 @@
 ﻿using GeniusChuck.Newsletter.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-
+using Microsoft.Extensions.Logging;
 
 namespace EFCore_Seeder
 {
-    internal static class DbContextFactory
+    internal class DbContextFactory
     {
         public static ApplicationDbContext CreateDbContext()
         {
@@ -17,12 +17,19 @@ namespace EFCore_Seeder
                 .AddJsonFile(Directory.GetCurrentDirectory() + $"/appsettings.{environment}.json", true)
                 .Build();
 
+            var loggerFactory = LoggerFactory.Create(builder =>
+            {
+                builder.AddConfiguration(configuration.GetSection("Logging"));
+                builder.AddConsole();
+            });
+
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             builder.UseSqlServer(connectionString);
+            builder.UseLoggerFactory(loggerFactory);
+            builder.EnableSensitiveDataLogging();
 
             return new ApplicationDbContext(builder.Options);
         }
-
     }
 }
