@@ -35,7 +35,7 @@ var employesFaker = new Faker<Employe>()
     .RuleFor(e => e.Nom, f => f.Person.FullName)
     .RuleFor(e => e.Age, f => f.Random.Int(22, 55))
     .RuleFor(e => e.DateEmbauche, f => f.Date.Between(new DateTime(2017, 01, 01), new DateTime(2022, 02, 02)))
-    .RuleFor(e => e.SalaireAnnuel, f => double.Round(f.Random.Double(38000, 95000), 2))
+    .RuleFor(e => e.SalaireAnnuel, f => f.Random.Float(38000, 95000))
     .RuleFor(e => e.PaysOrigine, f => f.PickRandom(pays))
     .RuleFor(e => e.DepartementId, f => f.PickRandom(departements).Id)
     .FinishWith((f, e) =>

@@ -40,7 +40,7 @@ namespace Exercices_Formulaire_Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departements");
+                    b.ToTable("Departements", (string)null);
                 });
 
             modelBuilder.Entity("Exercices_Formulaire_Web.Models.Employe", b =>
@@ -79,7 +79,7 @@ namespace Exercices_Formulaire_Web.Migrations
 
                     b.HasIndex("PaysId");
 
-                    b.ToTable("Employes");
+                    b.ToTable("Employes", (string)null);
                 });
 
             modelBuilder.Entity("Exercices_Formulaire_Web.Models.Pays", b =>
@@ -99,7 +99,7 @@ namespace Exercices_Formulaire_Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pays");
+                    b.ToTable("Pays", (string)null);
 
                     b.HasData(
                         new
