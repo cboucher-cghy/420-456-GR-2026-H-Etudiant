@@ -52,7 +52,7 @@ namespace GeniusChuck.Newsletter.Web.Controllers
             {
                 if (_categoryService.Exists(vm.Name))
                 {
-                    ModelState.AddModelError(nameof(CategoryCreateVM.Name), "Une catégorie de ce nom existe déjà!");
+                    ModelState.AddModelError("", "Une catégorie de ce nom existe déjà!");
                     return View(vm);
                 }
 

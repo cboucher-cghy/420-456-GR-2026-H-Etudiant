@@ -6,6 +6,7 @@ using GeniusChuck.Newsletter.Web.Validations;
 using Mapster;
 
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(x =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+CultureInfo.CurrentCulture = new("fr-CA");
 
 //builder.Services.AddScoped<INewsletterService, NewsletterInMemoryService>(); // Liste en mémoire au lieu d'une BD.
 builder.Services.AddScoped<INewsletterService, NewsletterService>();
@@ -60,6 +62,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapStaticAssets();
+
+//app.UseAntiforgery();
 
 //app.MapControllerRoute(
 //    name: "default",

@@ -14,6 +14,9 @@ namespace GeniusChuck.Newsletter.Web.ViewModels
 
         public string Description { get; set; } = default!;
 
-        public string IdSuggere { get; set; } = default!;
+        //[PhoneMask("ddd-ddd-dddd")]
+        //public string Telephone { get; set; }
+
+        public string? IdSuggere { get; set; } = default!;
     }
 }
