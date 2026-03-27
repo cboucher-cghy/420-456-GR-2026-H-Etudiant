@@ -12,7 +12,10 @@ namespace GeniusChuck.Newsletter.Web.MapperProfiles
             TypeAdapterConfig<CategoryCreateVM, Category>.NewConfig()
                 .Map(src => src.Id, dest => int.Parse(dest.IdSuggere));
 
-            // TODO: Ajouter un exemple de SelectList
+            // Exemple de SelectList
+            //TypeAdapterConfig.NewConfig<SourceItem, SelectListItem>()
+            //.Map(dest => dest.Value, src => src.Id)
+            //.Map(dest => dest.Text, src => src.Name);
         }
     }
 }
