@@ -1,16 +1,20 @@
-﻿using GeniusChuck.Newsletter.Web.Services;
+﻿using GeniusChuck.Newsletter.Web.Rôles;
+using GeniusChuck.Newsletter.Web.Services;
 using GeniusChuck.Newsletter.Web.ViewModels;
 using Mapster;
 using MapsterMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeniusChuck.Newsletter.Web.Controllers
 {
+    [Authorize(Roles = nameof(RolesConstant.ADMIN_ENSEIGNANT) + "," + nameof(RolesConstant.ENSEIGNANT) + "," + nameof(RolesConstant.Etudiant)]
     public class CategoriesController(CategoryService categoryService, IMapper mapper) : Controller
     {
         private readonly CategoryService _categoryService = categoryService;
         private readonly IMapper _mapper = mapper;
 
+        [AllowAnonymous]
         // GET: Categories
         public IActionResult Index()
         {
