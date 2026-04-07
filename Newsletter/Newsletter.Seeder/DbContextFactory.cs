@@ -20,16 +20,30 @@ namespace EFCore_Seeder
             var loggerFactory = LoggerFactory.Create(builder =>
             {
                 builder.AddConfiguration(configuration.GetSection("Logging"));
-                builder.AddConsole();
+                if (IsDevelopment())
+                {
+                    // N'utiliser la console qu'en développement, car c'est lent une console!
+                    builder.AddConsole();
+                }
             });
 
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             builder.UseSqlServer(connectionString);
             builder.UseLoggerFactory(loggerFactory);
-            builder.EnableSensitiveDataLogging();
+
+            if (IsDevelopment())
+            {
+                builder.EnableSensitiveDataLogging();
+            }
 
             return new ApplicationDbContext(builder.Options);
+        }
+
+        private static bool IsDevelopment()
+        {
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
+            return environment == "Development";
         }
     }
 }
