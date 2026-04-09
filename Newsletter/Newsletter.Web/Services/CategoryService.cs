@@ -130,6 +130,10 @@ namespace GeniusChuck.Newsletter.Web.Services
 
         public ICollection<CategoryDto> GetAll()
         {
+            //return [.. _context.Categories.ProjectToType<CategoryDto>()];
+
+            //return _context.Categories.ProjectToType<CategoryDto>().ToList();
+
             return _context.Categories.Select(x => new CategoryDto()
             {
                 Id = x.Id,
@@ -137,6 +141,7 @@ namespace GeniusChuck.Newsletter.Web.Services
                 Description = x.Description,
                 CreatedAt = x.CreatedAt,
             }).ToList();
+
             // Par méthode d'extension.
             //return _context.Categories.ToCategoryDetailsVM(3);
 

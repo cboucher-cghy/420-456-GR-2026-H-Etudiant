@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GeniusChuck.Newsletter.Web.Controllers
 {
-    [Authorize(Roles = nameof(RolesConstant.ADMIN_ENSEIGNANT) + "," + nameof(RolesConstant.ENSEIGNANT) + "," + nameof(RolesConstant.Etudiant)]
+    [Authorize(Roles = nameof(RolesConstant.ADMIN_ENSEIGNANT) + "," + nameof(RolesConstant.ENSEIGNANT) + "," + nameof(RolesConstant.Etudiant))]
     public class CategoriesController(CategoryService categoryService, IMapper mapper) : Controller
     {
         private readonly CategoryService _categoryService = categoryService;
