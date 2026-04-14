@@ -7,6 +7,7 @@ using Mapster;
 
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -65,6 +66,8 @@ app.UseAuthorization();
 app.MapStaticAssets();
 
 //app.UseAntiforgery();
+
+TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
 
 //app.MapControllerRoute(
 //    name: "default",

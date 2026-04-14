@@ -4,13 +4,14 @@ using Mapster;
 
 namespace GeniusChuck.Newsletter.Web.MapperProfiles
 {
-    public class CategoryProfile
+    public class CategoryProfile : IRegister
     {
-        public CategoryProfile()
+        public void Register(TypeAdapterConfig config)
         {
             // Exemple de mapping spécial entre deux propriétés de noms différents.
-            TypeAdapterConfig<CategoryCreateVM, Category>.NewConfig()
-                .Map(src => src.Id, dest => int.Parse(dest.IdSuggere));
+            config.NewConfig<CategoryCreateVM, Category>()
+                .TwoWays()
+                .Map(dest => dest.Id, src => int.Parse(src.IdSuggere));
 
             // Exemple de SelectList
             //TypeAdapterConfig.NewConfig<SourceItem, SelectListItem>()
