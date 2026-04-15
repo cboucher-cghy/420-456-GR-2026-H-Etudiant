@@ -1,9 +1,9 @@
-﻿using GeniusChuck.Newsletter.Web.Data;
+﻿using BackgroundTasks.Web.Exemple.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace EFCore.Seeder
+namespace BackgroundTasks.Seeder.Exemple
 {
     internal class DbContextFactory
     {

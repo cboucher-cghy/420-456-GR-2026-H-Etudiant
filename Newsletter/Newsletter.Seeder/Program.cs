@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using EFCore_Seeder;
+using EFCore.Seeder;
 using GeniusChuck.Newsletter.Web.Models;
 
 var context = DbContextFactory.CreateDbContext();

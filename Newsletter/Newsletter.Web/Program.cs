@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using System.Reflection;
 
+CultureInfo.CurrentCulture = new("fr-CA");
+
 var builder = WebApplication.CreateBuilder(args);
 
 var mvcBuilder = builder.Services.AddControllersWithViews()
@@ -23,6 +25,8 @@ if (builder.Environment.IsDevelopment())
 {
     // Ajouter le RazorRuntimeCompilation seulement lorsqu'on est en mode développement
     mvcBuilder.AddRazorRuntimeCompilation();
+
+    builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 }
 
 // Add services to the container.
@@ -36,10 +40,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(x =>
     x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 });
-
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-CultureInfo.CurrentCulture = new("fr-CA");
 
 //builder.Services.AddScoped<INewsletterService, NewsletterInMemoryService>(); // Liste en mémoire au lieu d'une BD.
 builder.Services.AddScoped<INewsletterService, NewsletterService>();
