@@ -8,10 +8,27 @@ namespace GeniusChuck.Newsletter.Web.MapperProfiles
     {
         public void Register(TypeAdapterConfig config)
         {
-            // Exemple de mapping spécial entre deux propriétés de noms différents.
+            // Impossible, car la conversion n'est pas équivalente d'un sens vers l'autre.
+            //config.NewConfig<CategoryCreateVM, Category>()
+            //    .TwoWays()
+            //    .Map(dest => dest.Id, src => int.Parse(src.IdSuggere));
+
+            // Mapping explicite de CategoryCreateVM -> Category avec conversion sécurisée de Id.
             config.NewConfig<CategoryCreateVM, Category>()
-                .TwoWays()
-                .Map(dest => dest.Id, src => int.Parse(src.IdSuggere));
+                .AfterMapping((src, dest) =>
+                {
+                    if (!string.IsNullOrWhiteSpace(src.IdSuggere) && int.TryParse(src.IdSuggere, out var id))
+                    {
+                        dest.Id = id;
+                    }
+                });
+
+            // Mapping explicite inverse Category -> CategoryCreateVM pour peupler IdSuggere.
+            config.NewConfig<Category, CategoryCreateVM>()
+                .AfterMapping((src, dest) =>
+                {
+                    dest.IdSuggere = src.Id.ToString();
+                });
 
             // Exemple de SelectList
             //TypeAdapterConfig.NewConfig<SourceItem, SelectListItem>()
